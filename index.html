@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control del LED</title>
+  <script>
+    function toggleLED(action) {
+      fetch(`http://192.168.1.10/led?action=${action}`)
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('status').innerHTML = data;
+        });
+    }
+  </script>
+</head>
+<body>
+  <h1>Control del LED en ESP32</h1>
+  <button onclick="toggleLED('on')">Encender LED</button>
+  <button onclick="toggleLED('off')">Apagar LED</button>
+  <p id="status"></p>
+</body>
+</html>
