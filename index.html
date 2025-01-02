@@ -6,12 +6,30 @@
   <title>Control del LED</title>
   <script>
     function toggleLED(action) {
+  fetch('http://192.168.1.8/led?action=' + action)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error en la solicitud');
+      }
+      return response.text();
+    })
+    .then(data => {
+      console.log(data);
+      alert('LED ' + action);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Hubo un error al intentar cambiar el estado del LED.');
+    });
+}
+
+    /* function toggleLED(action) {
       fetch(`http://192.168.1.8/led?action=${action}`)
         .then(response => response.text())
         .then(data => {
           document.getElementById('status').innerHTML = data;
         });
-    }
+    } */
   </script>
 </head>
 <body>
