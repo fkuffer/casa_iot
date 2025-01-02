@@ -6,7 +6,7 @@
   <title>Control del LED</title>
   <script>
     function toggleLED(action) {
-      fetch(`http://192.168.1.11/led?action=${action}`)
+      fetch(`https://192.168.1.11/led?action=${action}`)
         .then(response => response.text())
         .then(data => {
           document.getElementById('status').innerHTML = data;
