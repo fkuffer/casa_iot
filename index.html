@@ -15,11 +15,11 @@
     })
     .then(data => {
       console.log(data);
-      alert('LED ' + action);
+      console.log(('LED ' + action));;
     })
     .catch(error => {
       console.error('Error:', error);
-      alert('Hubo un error al intentar cambiar el estado del LED.');
+      
     });
 }
 
