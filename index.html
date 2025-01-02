@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Control del LED casa</title>
   <script>
     function toggleLED(action) {
-  fetch('https://192.168.1.8/led?action=' + action)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Error en la solicitud');
-      }
-      return response.text();
-    })
-    .then(data => {
-      console.log(data);
-      console.log(('LED ' + action));;
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      
-    });
-}
+      fetch('http://192.168.1.8/led?action=' + action)  // Cambiado a http en lugar de https
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Error en la solicitud');
+          }
+          return response.text();
+        })
+        .then(data => {
+          console.log(data);
+          console.log(('LED ' + action));
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
 
     /* function toggleLED(action) {
       fetch(`http://192.168.1.8/led?action=${action}`)
@@ -32,10 +32,12 @@
     } */
   </script>
 </head>
+
 <body>
   <h1>Control del LED en ESP32</h1>
   <button onclick="toggleLED('on')">Encender LED</button>
   <button onclick="toggleLED('off')">Apagar LED</button>
   <p id="status"></p>
 </body>
+
 </html>
