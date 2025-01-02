@@ -6,7 +6,7 @@
   <title>Control del LED casa</title>
   <script>
     function toggleLED(action) {
-  fetch('http://192.168.1.8/led?action=' + action)
+  fetch('https://192.168.1.8/led?action=' + action)
     .then(response => {
       if (!response.ok) {
         throw new Error('Error en la solicitud');
